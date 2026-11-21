@@ -163,7 +163,7 @@ a{color:var(--accent);text-decoration:none;}
 .story-share p{font-size:.85rem;color:var(--fg3);font-weight:300;margin-bottom:.8rem;}
 .share-btns{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;}
 .share-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;border-radius:6px;font-size:.8rem;font-weight:600;border:1px solid var(--border);color:var(--fg2);background:var(--card-bg);cursor:pointer;transition:all .15s;min-height:44px;}
-.share-btn:hover{border-color:var(--accent);color:var(--accent);}
+.share-btn:hover{border-color:var(--accent);color:var(--accent);}.share-fb{color:#1877f2;border-color:#1877f2;}.share-fb:hover{background:#1877f2;color:#fff;}.share-wa{color:#25d366;border-color:#25d366;}.share-wa:hover{background:#25d366;color:#fff;}
 
 /* ── ABOUT ── */
 .about-hero{background:var(--hero-grad);padding:4rem 1rem;text-align:center;position:relative;overflow:hidden;}
