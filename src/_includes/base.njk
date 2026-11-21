@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="{{ description or 'HerzWelt – Vollständige deutsche Geschichten über Liebe, Schicksal und Familie.' }}">
+<title>{% if title %}{{ title }} – HerzWelt{% else %}HerzWelt – Deutsche Geschichten{% endif %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>21. November 2026 — Täglich neue Geschichten</span>
+    <a href="/kontakt/">Kontakt</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <img src="/assets/images/logo.webp" alt="HerzWelt" width="200" height="56">
+      <div class="logo-text">
+        <span class="logo-name">Herz<em>Welt</em></span>
+        <span class="logo-tagline">Deutsche Geschichten · Täglich neu</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+      <li><a href="/geschichten/" {% if "/geschichten" in page.url %}class="active"{% endif %}>Geschichten</a></li>
+      <li><a href="/ueber-uns/" {% if "/ueber-uns" in page.url %}class="active"{% endif %}>Über uns</a></li>
+      <li><a href="/kontakt/" {% if "/kontakt" in page.url %}class="active"{% endif %}>Kontakt</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-theme" id="themeToggle">🌙</button>
+      <button class="nav-mobile-btn" id="mobileBtn">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+{{ content | safe }}
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="/assets/images/logo.webp" alt="HerzWelt" width="160" height="52">
+      </div>
+      <p class="footer-desc">Vollständige fiktive Geschichten auf Deutsch — täglich neue Erzählungen über Liebe, Familie und menschliche Schicksale.</p>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-col">
+        <h4>Seiten</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/geschichten/">Alle Geschichten</a></li>
+          <li><a href="/ueber-uns/">Über uns</a></li>
+          <li><a href="/kontakt/">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul>
+          <li><a href="/geschichten/">Liebe</a></li>
+          <li><a href="/geschichten/">Familie</a></li>
+          <li><a href="/geschichten/">Schicksal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HerzWelt. Alle Geschichten sind fiktiv. Alle Rechte vorbehalten.</span>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
