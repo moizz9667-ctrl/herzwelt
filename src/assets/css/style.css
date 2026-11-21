@@ -237,10 +237,11 @@ a{color:var(--accent);text-decoration:none;}
   .top-bar span{display:none;}
 }
 @media(max-width:480px){
-  .site-logo img{height:34px;}
-  .logo-name{font-size:0.9rem;}
-  .logo-tagline{display:block;font-size:0.5rem;}
-  .header-inner{height:50px;padding:0 .75rem;gap:.4rem;}
+  .site-logo img{height:40px;}
+  .logo-name{font-size:1rem;font-weight:900;}
+  .logo-tagline{display:block;font-size:0.52rem;letter-spacing:0.08em;}
+  .header-inner{height:56px;padding:0 1rem;gap:.5rem;}
+  .site-logo{gap:0.5rem;}
   .nav-links.open{top:54px;}
   .cards-grid{grid-template-columns:1fr;}
   .values-grid{grid-template-columns:1fr;}
