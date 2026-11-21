@@ -212,7 +212,7 @@ a{color:var(--accent);text-decoration:none;}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
 .footer-col a{font-size:.83rem;color:rgba(255,255,255,.55);text-decoration:none;transition:color .15s;}
 .footer-col a:hover{color:#fff;}
-.footer-bottom{max-width:1160px;margin:2rem auto 0;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.footer-bottom{max-width:1160px;margin:2rem auto 0;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;}
 .footer-copy{font-size:.74rem;color:rgba(255,255,255,.25);}
 
 /* ── RESPONSIVE ── */
