@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<title>HerzWelt – Deutsche Geschichten</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+/* Light blue editorial theme */
+:root {
+  --bg:        #f0f6ff;
+  --bg2:       #e2eeff;
+  --bg3:       #ccdeff;
+  --fg:        #0a1628;
+  --fg2:       #2a3a54;
+  --fg3:       #6a7a98;
+  --accent:    #1a6fd4;
+  --accent2:   #1255a8;
+  --accent-light: #e8f0ff;
+  --accent-border:#b8d0ff;
+  --border:    #d0dff4;
+  --card-bg:   #ffffff;
+  --card-shadow: 0 2px 8px rgba(26,111,212,0.08), 0 8px 28px rgba(10,22,40,0.07);
+  --card-hover:  0 8px 24px rgba(26,111,212,0.18), 0 16px 40px rgba(10,22,40,0.1);
+  --header-bg: #0a1628;
+  --header-fg2:#6a8ab8;
+  --topbar-bg: #1a6fd4;
+  --quote-bg:  #eef4ff;
+  --end-bg:    #f0f6ff;
+  --hero-grad: linear-gradient(135deg,#0a1628 0%,#0d2a52 50%,#0a1a38 100%);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:   'Inter',system-ui,sans-serif;
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#060e1c; --bg2:#0c1628; --bg3:#121e34;
+    --fg:#e8f0ff; --fg2:#90a8cc; --fg3:#506080;
+    --accent:#4a9af0; --accent2:#1a6fd4;
+    --accent-light:#0a1428; --accent-border:#1a2e50;
+    --border:#1a2840; --card-bg:#0c1628;
+    --card-shadow:0 2px 8px rgba(0,0,0,0.5),0 8px 28px rgba(0,0,0,0.5);
+    --card-hover:0 8px 24px rgba(74,154,240,0.2),0 16px 40px rgba(0,0,0,0.5);
+    --header-bg:#030810; --header-fg2:#3a5a80;
+    --topbar-bg:#0d2a52; --quote-bg:#0a1428;
+    --end-bg:#0a1020; --hero-grad:linear-gradient(135deg,#030810 0%,#0a1e38 50%,#06100e 100%);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#060e1c; --bg2:#0c1628; --bg3:#121e34;
+  --fg:#e8f0ff; --fg2:#90a8cc; --fg3:#506080;
+  --accent:#4a9af0; --accent2:#1a6fd4;
+  --accent-light:#0a1428; --accent-border:#1a2e50;
+  --border:#1a2840; --card-bg:#0c1628;
+  --card-shadow:0 2px 8px rgba(0,0,0,0.5),0 8px 28px rgba(0,0,0,0.5);
+  --card-hover:0 8px 24px rgba(74,154,240,0.2),0 16px 40px rgba(0,0,0,0.5);
+  --header-bg:#030810; --header-fg2:#3a5a80;
+  --topbar-bg:#0d2a52; --quote-bg:#0a1428;
+  --end-bg:#0a1020; --hero-grad:linear-gradient(135deg,#030810 0%,#0a1e38 50%,#06100e 100%);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--fg);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;
+  line-height:1.65;
+}
+body::before{
+  content:"";position:fixed;inset:0 0 auto;
+  height:env(safe-area-inset-top,0px);z-index:200;
+  background:var(--topbar-bg);
+}
+
+/* ── TOP BAR ── */
+.top-bar{background:var(--topbar-bg);padding:0.4rem max(16px,env(safe-area-inset-left,0px));}
+.top-bar-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.top-bar span{font-size:0.72rem;color:rgba(255,255,255,0.8);font-weight:500;letter-spacing:0.04em;}
+.top-bar a{color:rgba(255,255,255,0.9);text-decoration:none;font-size:0.72rem;font-weight:600;}
+
+/* ── HEADER ── */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--header-bg);z-index:100;border-bottom:3px solid var(--accent);}
+.header-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 max(16px,env(safe-area-inset-left,0px));height:62px;gap:1.5rem;}
+.site-logo{font-family:var(--font-display);font-size:1.55rem;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-0.02em;cursor:pointer;flex-shrink:0;}
+.site-logo em{color:var(--accent);font-style:normal;}
+.nav-links{display:flex;gap:0;list-style:none;align-items:center;flex:1;justify-content:center;}
+.nav-links a{display:block;padding:0.5rem 0.85rem;text-decoration:none;color:var(--header-fg2);font-size:0.8rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.15s;white-space:nowrap;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-links a.active{border-bottom:2px solid var(--accent);}
+.nav-actions{display:flex;align-items:center;gap:0.5rem;flex-shrink:0;}
+.nav-theme{background:none;border:1px solid rgba(255,255,255,0.15);border-radius:6px;width:34px;height:34px;cursor:pointer;color:var(--header-fg2);font-size:0.9rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.nav-theme:hover{border-color:var(--accent);color:#fff;}
+.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:1.3rem;padding:0.3rem;}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ══════════════════════════════
+   HOME PAGE
+══════════════════════════════ */
+
+/* Hero Banner */
+.home-hero{
+  background:var(--hero-grad);
+  padding:3.5rem max(16px,env(safe-area-inset-left,0px)) 3rem;
+  position:relative;overflow:hidden;
+}
+.home-hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 50%,rgba(74,154,240,0.15) 0%,transparent 60%),
+             radial-gradient(ellipse at 80% 50%,rgba(26,111,212,0.1) 0%,transparent 60%);
+}
+.home-hero::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--accent),#60b0ff,var(--accent));
+}
+.hero-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1;text-align:center;}
+.hero-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(74,154,240,0.9);margin-bottom:1rem;}
+.hero-heading{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.4rem);font-weight:900;color:#fff;line-height:1.15;text-wrap:balance;margin-bottom:1rem;letter-spacing:-0.02em;}
+.hero-heading em{color:#7dd3fc;font-style:italic;}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.6);max-width:480px;margin:0 auto 2rem;line-height:1.7;font-weight:300;}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;}
+.stat-item{text-align:center;}
+.stat-num{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:#fff;font-variant-numeric:tabular-nums;}
+.stat-label{font-size:0.72rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;}
+
+/* Section header */
+.section-head{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:2.2rem max(16px,env(safe-area-inset-left,0px)) 1.3rem;}
+.section-head h2{font-family:var(--font-display);font-size:1.1rem;font-weight:900;color:var(--fg);white-space:nowrap;display:flex;align-items:center;gap:0.5rem;}
+.section-head h2::before{content:"";display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px;flex-shrink:0;}
+.section-line{flex:1;height:1px;background:var(--border);}
+.section-link{font-size:0.78rem;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap;cursor:pointer;}
+.section-link:hover{text-decoration:underline;}
+
+/* Featured card */
+.featured-wrap{max-width:1160px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px));}
+.featured-card{display:grid;grid-template-columns:1.2fr 1fr;border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);background:var(--card-bg);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+.featured-card:hover{transform:translateY(-3px);box-shadow:var(--card-hover);}
+.featured-img{background:var(--hero-grad);min-height:260px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.featured-img::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(74,154,240,0.2) 0%,transparent 70%);}
+.featured-img-emoji{font-size:5rem;opacity:0.15;position:absolute;}
+.featured-img-text{position:relative;z-index:1;padding:2rem;text-align:center;}
+.featured-img-badge{display:inline-block;background:var(--accent);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:3px;margin-bottom:0.9rem;}
+.featured-img-title{font-family:var(--font-display);font-size:clamp(1rem,2vw,1.3rem);font-weight:700;color:#fff;line-height:1.3;text-wrap:balance;}
+.featured-body{padding:2rem 2rem 2rem 1.8rem;display:flex;flex-direction:column;justify-content:center;gap:0.9rem;}
+.featured-meta{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.badge{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.2em 0.65em;border-radius:3px;}
+.meta-txt{font-size:0.75rem;color:var(--fg3);}
+.featured-title{font-family:var(--font-display);font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;color:var(--fg);line-height:1.25;text-wrap:balance;}
+.featured-excerpt{font-size:0.9rem;color:var(--fg2);line-height:1.7;font-weight:300;}
+.read-btn{display:inline-flex;align-items:center;gap:0.4rem;background:var(--accent);color:#fff;font-size:0.82rem;font-weight:600;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;border:none;cursor:pointer;transition:background 0.15s,transform 0.15s;width:fit-content;}
+.read-btn:hover{background:var(--accent2);transform:translateX(2px);}
+.read-btn::after{content:"→";}
+
+/* Cards grid */
+.cards-wrap{max-width:1160px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 1rem;}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.story-card{background:var(--card-bg);border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);display:flex;flex-direction:column;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s,border-color 0.18s;}
+.story-card:hover{transform:translateY(-4px);box-shadow:var(--card-hover);border-color:var(--accent);}
+.card-thumb{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative;}
+.card-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,0.4) 0%,transparent 55%);}
+.card-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:0.5rem;flex:1;}
+.card-meta-row{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
+.card-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--fg);line-height:1.3;text-wrap:balance;}
+.card-excerpt{font-size:0.83rem;color:var(--fg2);line-height:1.6;font-weight:300;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.card-read{display:inline-flex;align-items:center;gap:0.3rem;color:var(--accent);font-weight:600;font-size:0.8rem;margin-top:0.4rem;}
+.story-card:hover .card-read::after{transform:translateX(3px);}
+.card-read::after{content:"→";transition:transform 0.15s;}
+
+/* Ad slot */
+.ad-slot{max-width:1160px;margin:1.5rem auto;padding:0 max(16px,env(safe-area-inset-left,0px));}
+.ad-box{background:var(--bg2);border:1px dashed var(--border);border-radius:8px;height:90px;display:flex;align-items:center;justify-content:center;color:var(--fg3);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+
+/* ══════════════════════════════
+   STORY PAGE
+══════════════════════════════ */
+.story-page{max-width:780px;margin:0 auto;padding-bottom:4rem;}
+
+.story-cover{
+  width:100%;aspect-ratio:16/7;
+  background:var(--hero-grad);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.story-cover::after{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#60b0ff,var(--accent));}
+.story-cover-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(74,154,240,0.2) 0%,transparent 55%),radial-gradient(ellipse at 70% 50%,rgba(100,180,255,0.1) 0%,transparent 55%);}
+.story-cover-emoji{font-size:7rem;opacity:0.08;position:absolute;}
+.story-cover-quote{position:relative;z-index:1;text-align:center;padding:2rem;}
+.story-cover-label{display:inline-block;background:var(--accent);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.3em 1em;border-radius:3px;margin-bottom:1.1rem;}
+.story-cover-text{font-family:var(--font-display);font-size:clamp(1rem,2.5vw,1.45rem);font-style:italic;color:rgba(255,255,255,0.88);line-height:1.5;max-width:520px;text-shadow:0 2px 12px rgba(0,0,0,0.5);}
+
+.story-header{padding:2rem max(16px,env(safe-area-inset-left,0px)) 0;}
+.story-breadcrumb{font-size:0.78rem;color:var(--fg3);margin-bottom:1rem;display:flex;align-items:center;gap:0.4rem;}
+.story-breadcrumb a{color:var(--accent);text-decoration:none;cursor:pointer;}
+.story-breadcrumb a:hover{text-decoration:underline;}
+.story-meta-row{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.1rem;flex-wrap:wrap;}
+.story-h1{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:var(--fg);line-height:1.18;text-wrap:balance;margin-bottom:1rem;letter-spacing:-0.01em;}
+.story-byline{display:flex;align-items:center;gap:0.75rem;padding-bottom:1.3rem;border-bottom:1px solid var(--border);margin-bottom:2rem;}
+.byline-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent-light);border:2px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.byline-name{font-size:0.82rem;font-weight:600;color:var(--fg);}
+.byline-sub{font-size:0.74rem;color:var(--fg3);font-weight:300;}
+
+.story-body{padding:0 max(16px,env(safe-area-inset-left,0px));}
+.story-body p{font-size:1.05rem;color:var(--fg2);line-height:1.9;margin-bottom:1.5rem;font-weight:300;}
+.story-body .drop-cap::first-letter{font-family:var(--font-display);font-size:3.8rem;font-weight:900;float:left;line-height:0.8;margin:0.1em 0.12em 0 0;color:var(--accent);}
+.pull-quote{border-left:3px solid var(--accent);padding:1.2rem 1.5rem;margin:2.2rem 0;background:var(--quote-bg);border-radius:0 10px 10px 0;border-top:1px solid var(--accent-border);border-right:1px solid var(--accent-border);border-bottom:1px solid var(--accent-border);}
+.pull-quote p{font-family:var(--font-display);font-style:italic;color:var(--fg);font-size:1.05rem;line-height:1.75;margin:0;}
+.story-center{font-size:1.15rem;font-family:var(--font-display);font-style:italic;color:var(--fg);line-height:1.6;margin:1.5rem 0;text-align:center;padding:0.5rem 0;}
+
+.ending-box{background:var(--end-bg);border-radius:12px;padding:1.8rem 2rem;margin:2.5rem max(16px,env(safe-area-inset-left,0px));border:1px solid var(--accent-border);position:relative;overflow:hidden;}
+.ending-box::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#60b0ff,var(--accent));}
+.ending-label{font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.ending-box p{font-size:0.98rem;color:var(--fg2);line-height:1.85;font-weight:300;margin-bottom:0.9rem;}
+.ending-box p:last-child{margin-bottom:0;}
+
+.story-share{text-align:center;padding:1.5rem max(16px,env(safe-area-inset-left,0px));border-top:1px solid var(--border);margin-top:2rem;}
+.story-share p{font-size:0.85rem;color:var(--fg3);font-weight:300;margin-bottom:0.8rem;}
+.share-btns{display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;}
+.share-btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;border-radius:6px;font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid var(--border);color:var(--fg2);background:var(--card-bg);cursor:pointer;transition:all 0.15s;}
+.share-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ══════════════════════════════
+   ABOUT PAGE
+══════════════════════════════ */
+.about-hero{background:var(--hero-grad);padding:4rem max(16px,env(safe-area-inset-left,0px)) 4rem;text-align:center;position:relative;overflow:hidden;}
+.about-hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#60b0ff,var(--accent));}
+.about-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#fff;text-wrap:balance;margin-bottom:0.8rem;}
+.about-hero p{font-size:1rem;color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto;line-height:1.7;font-weight:300;}
+
+.about-wrap{max-width:900px;margin:0 auto;padding:3rem max(16px,env(safe-area-inset-left,0px)) 4rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:3rem;}
+.about-text h2{font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:var(--fg);margin-bottom:1rem;line-height:1.3;}
+.about-text p{font-size:0.95rem;color:var(--fg2);line-height:1.8;font-weight:300;margin-bottom:1rem;}
+.about-visual{background:var(--hero-grad);border-radius:14px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid var(--border);}
+
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem;}
+.value-card{background:var(--card-bg);border-radius:12px;padding:1.5rem;border:1px solid var(--border);box-shadow:var(--card-shadow);text-align:center;}
+.value-icon{font-size:2rem;margin-bottom:0.8rem;}
+.value-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:0.5rem;}
+.value-desc{font-size:0.85rem;color:var(--fg2);line-height:1.6;font-weight:300;}
+
+/* ══════════════════════════════
+   CONTACT PAGE
+══════════════════════════════ */
+.contact-wrap{max-width:720px;margin:0 auto;padding:3rem max(16px,env(safe-area-inset-left,0px)) 4rem;}
+.contact-hero{text-align:center;margin-bottom:3rem;}
+.contact-hero h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;color:var(--fg);margin-bottom:0.7rem;}
+.contact-hero p{font-size:0.95rem;color:var(--fg2);line-height:1.7;font-weight:300;}
+.contact-form{background:var(--card-bg);border-radius:14px;padding:2rem;border:1px solid var(--border);box-shadow:var(--card-shadow);}
+.contact-form::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--accent),#60b0ff);border-radius:4px;margin:-2rem -2rem 2rem;}
+.form-group{margin-bottom:1.3rem;}
+.form-label{display:block;font-size:0.82rem;font-weight:600;color:var(--fg);margin-bottom:0.4rem;}
+.form-input,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;font-family:var(--font-body);color:var(--fg);transition:border-color 0.15s,box-shadow 0.15s;outline:none;}
+.form-input:focus,.form-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,111,212,0.12);}
+.form-textarea{min-height:120px;resize:vertical;}
+.form-submit{width:100%;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:0.85rem;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:background 0.15s,transform 0.15s;}
+.form-submit:hover{background:var(--accent2);transform:translateY(-1px);}
+.contact-info{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem;}
+.info-card{background:var(--bg2);border-radius:10px;padding:1.2rem;border:1px solid var(--border);text-align:center;}
+.info-card .icon{font-size:1.5rem;margin-bottom:0.5rem;}
+.info-card h4{font-size:0.85rem;font-weight:600;color:var(--fg);margin-bottom:0.3rem;}
+.info-card p{font-size:0.8rem;color:var(--fg3);font-weight:300;}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+.site-footer{background:var(--header-bg);border-top:3px solid var(--accent);padding:2.5rem max(16px,env(safe-area-inset-left,0px)) 2rem;margin-top:1rem;}
+.footer-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start;}
+.footer-logo{font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:#fff;letter-spacing:-0.02em;margin-bottom:0.6rem;}
+.footer-logo em{color:var(--accent);font-style:normal;}
+.footer-desc{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.6;}
+.footer-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.footer-col h4{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.9rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col a{font-size:0.83rem;color:rgba(255,255,255,0.55);text-decoration:none;cursor:pointer;transition:color 0.15s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{max-width:1160px;margin:2rem auto 0;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.footer-copy{font-size:0.74rem;color:rgba(255,255,255,0.25);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .cards-grid{grid-template-columns:repeat(2,1fr);}
+  .featured-card{grid-template-columns:1fr;}
+  .featured-img{min-height:200px;}
+  .footer-inner{grid-template-columns:1fr;gap:2rem;}
+  .footer-nav{grid-template-columns:repeat(2,1fr);}
+  .about-grid{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:680px){
+  .nav-links{display:none;}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:var(--header-bg);border-bottom:2px solid var(--accent);padding:1rem max(16px,env(safe-area-inset-left,0px));gap:0;z-index:99;}
+  .nav-mobile-btn{display:flex;}
+  .contact-info{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .cards-grid{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+}
+</style>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>21. November 2026 — Täglich neue Geschichten</span>
+    <a onclick="navigate('contact')">Kontakt</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="site-logo" onclick="navigate('home')">Herz<em>Welt</em></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="navigate('home')" id="nav-home" class="active">Startseite</a></li>
+      <li><a onclick="navigate('stories')" id="nav-stories">Geschichten</a></li>
+      <li><a onclick="navigate('about')" id="nav-about">Über uns</a></li>
+      <li><a onclick="navigate('contact')" id="nav-contact">Kontakt</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-theme" id="themeToggle">🌙</button>
+      <button class="nav-mobile-btn" id="mobileBtn">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HOME PAGE ══ -->
+<div class="page active" id="page-home">
+
+  <div class="home-hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Willkommen bei HerzWelt</div>
+      <h1 class="hero-heading">Geschichten, die <em>bewegen</em></h1>
+      <p class="hero-sub">Vollständige deutsche Geschichten über Liebe, Schicksal und menschliche Stärke — täglich neu.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Geschichten</div></div>
+        <div class="stat-item"><div class="stat-num">10K+</div><div class="stat-label">Leser täglich</div></div>
+        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Kostenlos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot"><div class="ad-box"><!-- AdStera Werbung --></div></div>
+
+  <!-- Featured -->
+  <div class="section-head">
+    <h2>Titelgeschichte</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="featured-wrap">
+    <div class="featured-card" onclick="navigate('story')">
+      <div class="featured-img">
+        <div class="featured-img-emoji">💔</div>
+        <div class="featured-img-text">
+          <div class="featured-img-badge">Schicksal</div>
+          <div class="featured-img-title">Er dachte, er könnte sie wegen ihres Geldes ausnutzen – aber sie hatte jedes Wort gehört</div>
+        </div>
+      </div>
+      <div class="featured-body">
+        <div class="featured-meta">
+          <span class="badge">Schicksal</span>
+          <span class="meta-txt">21. Nov. 2026</span>
+          <span class="meta-txt">·</span>
+          <span class="meta-txt">7 Min.</span>
+        </div>
+        <div class="featured-title">Er dachte, er könnte sie wegen ihres Geldes ausnutzen – aber sie hatte jedes Wort gehört</div>
+        <p class="featured-excerpt">Laura erbte nach dem Tod ihres Vaters ein kleines Vermögen. Markus dachte, er hätte die perfekte Gelegenheit gefunden. Er hatte keine Ahnung, dass sie jedes Wort hörte...</p>
+        <button class="read-btn" onclick="navigate('story')">Jetzt lesen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stories Grid -->
+  <div class="section-head">
+    <h2>Aktuelle Geschichten</h2>
+    <div class="section-line"></div>
+    <a class="section-link" onclick="navigate('stories')">Alle ansehen →</a>
+  </div>
+  <div class="cards-wrap">
+    <div class="cards-grid">
+
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0d2a52,#1a4a8a);">💍</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Liebe</span><span class="meta-txt">20. Nov.</span><span class="meta-txt">· 7 Min.</span></div>
+          <div class="card-title">Sie fand den Ring in seiner Jacke – aber er gehörte nicht ihr</div>
+          <p class="card-excerpt">Alina glaubt an das Beste, bis sie die Wahrheit hört. Die Geschichte mit vollem Ende.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0a2a1a,#1a5a3a);">👩‍👦</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Familie</span><span class="meta-txt">19. Nov.</span><span class="meta-txt">· 6 Min.</span></div>
+          <div class="card-title">Fünfzig Kindermädchen hatten aufgegeben – doch diese Frau blieb</div>
+          <p class="card-excerpt">Johanna entdeckt, welche Frage hinter den Streichen der Kinder steckt.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#1a0a2a,#3a1a5a);">📞</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Schicksal</span><span class="meta-txt">18. Nov.</span><span class="meta-txt">· 4 Min.</span></div>
+          <div class="card-title">„Daniel, dein Vater küsst deine Frau" – Der Anruf vor dem Hotel</div>
+          <p class="card-excerpt">Ein Anruf stellt Daniels Leben auf den Kopf. Die vollständige fiktive Geschichte.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ad-slot"><div class="ad-box"><!-- AdStera Werbung --></div></div>
+
+</div>
+
+<!-- ══ STORIES PAGE ══ -->
+<div class="page" id="page-stories">
+  <div class="home-hero" style="padding:2.5rem max(16px,env(safe-area-inset-left,0px)) 2rem;">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Alle Geschichten</div>
+      <h1 class="hero-heading" style="font-size:clamp(1.6rem,4vw,2.5rem);">Vollständige Geschichten</h1>
+      <p class="hero-sub" style="margin-bottom:0;">Jede Geschichte hat ein richtiges Ende.</p>
+    </div>
+  </div>
+  <div class="section-head"><h2>Alle Geschichten</h2><div class="section-line"></div></div>
+  <div class="cards-wrap" style="margin-bottom:3rem;">
+    <div class="cards-grid">
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0a1628,#1a4a8a);">💔</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Schicksal</span><span class="meta-txt">21. Nov. · 7 Min.</span></div>
+          <div class="card-title">Er dachte, er könnte sie wegen ihres Geldes ausnutzen</div>
+          <p class="card-excerpt">Laura hatte jedes Wort gehört. Am Ende bezahlt Gier ihren Preis.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0d2a52,#1a4a8a);">💍</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Liebe</span><span class="meta-txt">20. Nov. · 7 Min.</span></div>
+          <div class="card-title">Sie fand den Ring in seiner Jacke – aber er gehörte nicht ihr</div>
+          <p class="card-excerpt">Alina glaubt an das Beste, bis sie die Wahrheit hört.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0a2a1a,#1a5a3a);">👩‍👦</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Familie</span><span class="meta-txt">19. Nov. · 6 Min.</span></div>
+          <div class="card-title">Fünfzig Kindermädchen hatten aufgegeben – doch diese Frau blieb</div>
+          <p class="card-excerpt">Johanna entdeckt, welche Frage hinter den Streichen steckt.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#1a0a2a,#3a1a5a);">📞</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Schicksal</span><span class="meta-txt">18. Nov. · 4 Min.</span></div>
+          <div class="card-title">„Daniel, dein Vater küsst deine Frau" – Der Anruf</div>
+          <p class="card-excerpt">Ein Anruf stellt Daniels Leben auf den Kopf.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#1a1a0a,#3a3a1a);">🏠</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Familie</span><span class="meta-txt">17. Nov. · 6 Min.</span></div>
+          <div class="card-title">Das Haus war auf ihren Namen – aber niemand wusste warum</div>
+          <p class="card-excerpt">Als Sofias Mutter stirbt, findet sie Dokumente, die ihr Leben neu schreiben.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+      <div class="story-card" onclick="navigate('story')">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0a1a2a,#1a3a4a);">🌙</div>
+        <div class="card-body">
+          <div class="card-meta-row"><span class="badge">Liebe</span><span class="meta-txt">16. Nov. · 8 Min.</span></div>
+          <div class="card-title">Sie schrieb jeden Abend einen Brief – aber schickte ihn nie ab</div>
+          <p class="card-excerpt">Dreißig Jahre lang schrieb Emma Briefe. Die erschütternde Geschichte.</p>
+          <span class="card-read">Artikel lesen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ad-slot"><div class="ad-box"><!-- AdStera Werbung --></div></div>
+</div>
+
+<!-- ══ STORY DETAIL PAGE ══ -->
+<div class="page" id="page-story">
+  <div class="story-page">
+
+    <div class="story-cover">
+      <div class="story-cover-glow"></div>
+      <div class="story-cover-emoji">💔</div>
+      <div class="story-cover-quote">
+        <div class="story-cover-label">Vollständige Geschichte</div>
+        <div class="story-cover-text">"Am Ende bezahlt die Gier immer ihren Preis."</div>
+      </div>
+    </div>
+
+    <div class="story-header">
+      <div class="story-breadcrumb">
+        <a onclick="navigate('home')">Startseite</a> › <a onclick="navigate('stories')">Geschichten</a> › Aktuelle Geschichte
+      </div>
+      <div class="story-meta-row">
+        <span class="badge">Schicksal</span>
+        <span class="meta-txt">21. November 2026</span>
+        <span class="meta-txt">·</span>
+        <span class="meta-txt">7 Min. Lesezeit</span>
+      </div>
+      <h1 class="story-h1">Er dachte, er könnte sie wegen ihres Geldes ausnutzen – aber sie hatte jedes Wort gehört</h1>
+      <div class="story-byline">
+        <div class="byline-avatar">✍️</div>
+        <div>
+          <div class="byline-name">HerzWelt Redaktion</div>
+          <div class="byline-sub">Vollständige fiktive Geschichte</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-slot"><div class="ad-box"><!-- AdStera Werbung --></div></div>
+
+    <div class="story-body">
+      <p class="drop-cap">Laura war 34 Jahre alt, als ihr Vater starb und ihr ein kleines Vermögen hinterließ. Nicht genug, um nie wieder arbeiten zu müssen – aber genug, um aufzufallen. Genug, damit die falschen Menschen anfingen, sich für sie zu interessieren.</p>
+      <p>Markus kam drei Monate nach dem Tod ihres Vaters in ihr Leben. Charmant, aufmerksam, immer zur richtigen Zeit mit dem richtigen Satz. Er brachte ihr Blumen, ohne dass sie ihn darum bat. Er hörte zu, wenn sie sprach. Er lachte an den richtigen Stellen.</p>
+      <p>Laura dachte, sie hätte Glück gehabt.</p>
+      <p>Eines Abends – es war ein Dienstag, sie erinnerte sich noch genau – kam sie früher nach Hause als geplant. Markus war in der Küche und telefonierte. Er hatte die Tür nicht ganz geschlossen. Und Laura blieb im Flur stehen, weil sie ihren eigenen Namen hörte.</p>
+
+      <div class="pull-quote">
+        <p>"Sie merkt nichts", sagte Markus leise ins Telefon. "Sie ist so naiv. Noch zwei, drei Monate, dann heiraten wir, und danach läuft alles über mich. Ihr Konto, ihre Wohnung – alles."</p>
+      </div>
+
+      <p>Laura stand wie eingefroren. Ihr Herz schlug so laut, dass sie sicher war, er würde es hören. Aber Markus redete weiter, lachte sogar – ein Lachen, das sie nie zuvor an ihm gehört hatte. Kalt. Berechnet.</p>
+      <p>Sie hätte schreien können. Sie hätte weinen können. Stattdessen tat sie etwas, das Markus nie von ihr erwartet hätte.</p>
+      <p class="story-center">Sie lächelte.</p>
+      <p>Dann ging sie leise zurück zur Haustür, öffnete sie laut und rief: „Ich bin zu Hause!" – als wäre nichts gewesen.</p>
+      <p>In den nächsten vier Wochen spielte Laura die Rolle ihres Lebens. Sie war liebevoll, vertrauensvoll, ein bisschen naiv – genau so, wie Markus sie haben wollte. Aber gleichzeitig rief sie heimlich ihre Anwältin an. Sie ließ alle Konten sichern. Sie ließ jedes Gespräch aufzeichnen – legal, mit Genehmigung ihres Anwalts.</p>
+      <p>Und dann, an einem Freitagabend beim Abendessen, legte sie einen Umschlag auf den Tisch. „Was ist das?", fragte Markus. „Mach es auf", sagte Laura ruhig.</p>
+      <p>Darin lagen Ausdrucke. Kontoauszüge, Screenshots seiner Nachrichten, und eine eidesstattliche Erklärung seines eigenen Bruders. Markus wurde blass. Dann rot. „Du kannst mir nichts beweisen."</p>
+      <p>Laura legte ihr Handy auf den Tisch. Drückte Play. Seine eigene Stimme füllte den Raum: <em>„Sie merkt nichts... noch zwei, drei Monate..."</em></p>
+      <p>„Du hast jetzt genau zehn Minuten", sagte sie. „Danach rufe ich die Polizei an. Und meinen Anwalt. Und die Bank."</p>
+      <p class="story-center" style="font-size:1rem;">Er ging in acht Minuten.</p>
+    </div>
+
+    <div class="ending-box">
+      <div class="ending-label">✦ Das Ende</div>
+      <p>Drei Monate später erfuhr Laura, dass Markus dasselbe mit einer anderen Frau versucht hatte – und diesmal nicht so glimpflich davongekommen war. Die Polizei ermittelte. Laura wurde als Zeugin befragt und gab alles weiter.</p>
+      <p>Heute lebt Laura allein in ihrer Wohnung. Sie sagt, es ist das erste Mal seit Jahren, dass sie sich wirklich sicher fühlt. Nicht weil niemand mehr bei ihr ist – sondern weil sie jetzt genau weiß, wem sie vertrauen kann.</p>
+      <p style="font-family:var(--font-display);font-style:italic;color:var(--fg);font-size:1rem;">Sich selbst.</p>
+    </div>
+
+    <div class="story-share">
+      <p>Hat dir diese Geschichte gefallen? Teile sie mit jemandem, dem sie helfen könnte.</p>
+      <div class="share-btns">
+        <button class="share-btn">📘 Facebook</button>
+        <button class="share-btn">📱 WhatsApp</button>
+        <button class="share-btn">🔗 Link kopieren</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="ad-slot"><div class="ad-box"><!-- AdStera Werbung --></div></div>
+</div>
+
+<!-- ══ ABOUT PAGE ══ -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <h1>Über HerzWelt</h1>
+    <p>Dein Zuhause für vollständige deutsche Geschichten über Liebe, Schicksal und menschliche Stärke.</p>
+  </div>
+  <div class="about-wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Warum HerzWelt?</h2>
+        <p>HerzWelt wurde gegründet, um Menschen Geschichten zu erzählen, die wirklich bewegen. Keine halbfertigen Enden, keine Fortsetzungen ohne Abschluss – bei uns bekommt jede Geschichte ihr verdientes Ende.</p>
+        <p>Unsere Geschichten basieren auf menschlichen Erfahrungen: Vertrauen, Verrat, Liebe, Stärke. Sie sind fiktiv – aber sie könnten wahr sein.</p>
+        <p>Täglich neue Inhalte, komplett kostenlos, für jeden zugänglich.</p>
+      </div>
+      <div class="about-visual">📖</div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">✅</div>
+        <div class="value-title">Vollständige Enden</div>
+        <div class="value-desc">Jede Geschichte hat ein echtes, befriedigendes Ende. Kein Cliffhanger ohne Auflösung.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🇩🇪</div>
+        <div class="value-title">100% Deutsch</div>
+        <div class="value-desc">Alle Geschichten auf Deutsch – für deutsche Leser, natürlich und flüssig geschrieben.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🆓</div>
+        <div class="value-title">Komplett kostenlos</div>
+        <div class="value-desc">Keine Paywall, kein Abo. Alle Geschichten sind für jeden frei zugänglich.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTACT PAGE ══ -->
+<div class="page" id="page-contact">
+  <div class="contact-wrap">
+    <div class="contact-hero">
+      <h1>Kontakt</h1>
+      <p>Hast du eine Geschichte zu teilen, eine Frage oder ein Feedback? Schreib uns – wir freuen uns von dir zu hören.</p>
+    </div>
+    <div class="contact-form">
+      <div class="form-group">
+        <label class="form-label">Dein Name</label>
+        <input class="form-input" type="text" placeholder="Max Mustermann">
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-Mail-Adresse</label>
+        <input class="form-input" type="email" placeholder="deine@email.de">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Betreff</label>
+        <input class="form-input" type="text" placeholder="Worum geht es?">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nachricht</label>
+        <textarea class="form-textarea" placeholder="Schreib uns deine Nachricht..."></textarea>
+      </div>
+      <button class="form-submit" onclick="this.textContent='Nachricht gesendet ✓';this.style.background='#1a8a4a';">Nachricht senden →</button>
+    </div>
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="icon">📧</div>
+        <h4>E-Mail</h4>
+        <p>hallo@herzwelt.de</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">⏱️</div>
+        <h4>Antwortzeit</h4>
+        <p>Innerhalb von 24 Stunden</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Herz<em>Welt</em></div>
+      <p class="footer-desc">Vollständige fiktive Geschichten auf Deutsch — täglich neue Erzählungen über Liebe, Familie und menschliche Schicksale.</p>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-col">
+        <h4>Seiten</h4>
+        <ul>
+          <li><a onclick="navigate('home')">Startseite</a></li>
+          <li><a onclick="navigate('stories')">Alle Geschichten</a></li>
+          <li><a onclick="navigate('about')">Über uns</a></li>
+          <li><a onclick="navigate('contact')">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <ul>
+          <li><a onclick="navigate('stories')">Liebe</a></li>
+          <li><a onclick="navigate('stories')">Familie</a></li>
+          <li><a onclick="navigate('stories')">Schicksal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 HerzWelt. Alle Geschichten sind fiktiv. Alle Rechte vorbehalten.</span>
+  </div>
+</footer>
+
+<script>
+// ── THEME ──
+const toggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+let dark = false;
+try { dark = localStorage.getItem('hw-theme') === 'dark'; } catch(e){}
+function applyTheme(){ root.dataset.theme = dark?'dark':'light'; toggle.textContent = dark?'☀️':'🌙'; }
+applyTheme();
+toggle.addEventListener('click',()=>{ dark=!dark; applyTheme(); try{localStorage.setItem('hw-theme',dark?'dark':'light');}catch(e){} });
+
+// ── MOBILE NAV ──
+const mobileBtn = document.getElementById('mobileBtn');
+const navLinks = document.getElementById('navLinks');
+mobileBtn.addEventListener('click',()=>{
+  const open = navLinks.classList.toggle('open');
+  mobileBtn.textContent = open ? '✕' : '☰';
+});
+
+// ── NAVIGATION ──
+const pages = ['home','stories','story','about','contact'];
+function navigate(page){
+  pages.forEach(p=>{
+    document.getElementById('page-'+p).classList.toggle('active', p===page);
+    const navEl = document.getElementById('nav-'+p);
+    if(navEl) navEl.classList.toggle('active', p===page || (p==='stories' && page==='story'));
+  });
+  document.getElementById('nav-home').classList.toggle('active', page==='home');
+  window.scrollTo({top:0,behavior:'smooth'});
+  navLinks.classList.remove('open');
+  mobileBtn.textContent = '☰';
+}
+</script>
