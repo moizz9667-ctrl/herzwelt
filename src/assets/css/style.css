@@ -128,6 +128,10 @@ a{color:var(--accent);text-decoration:none;}
 .story-card:hover .card-read::after{transform:translateX(3px);}
 
 /* ── AD SLOT ── */
+.sidebar-banner-wrap{position:fixed;right:1rem;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;align-items:center;gap:0.3rem;}
+.sidebar-banner{display:flex;flex-direction:column;align-items:center;gap:0.3rem;}
+.sidebar-ad-label{font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);opacity:0.5;}
+@media(max-width:1400px){.sidebar-banner-wrap{display:none;}}
 .ad-slot{max-width:1160px;margin:2rem auto;padding:0 1rem;}
 .ad-slot::before{content:"Anzeige";display:block;text-align:center;font-size:0.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:0.4rem;opacity:0.6;}
 .ad-box{background:var(--bg2);border:1px dashed var(--border);border-radius:8px;height:90px;display:flex;align-items:center;justify-content:center;color:var(--fg3);font-size:0.72rem;letter-spacing:.08em;text-transform:uppercase;}
