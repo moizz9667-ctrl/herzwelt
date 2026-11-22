@@ -128,16 +128,31 @@ a{color:var(--accent);text-decoration:none;}
 .story-card:hover .card-read::after{transform:translateX(3px);}
 
 /* ── AD SLOT ── */
-.sticky-bottom-ad{position:fixed;bottom:0;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;align-items:center;gap:0.2rem;padding:0.3rem 0.5rem 0.4rem;background:var(--bg);border-top:1px solid var(--border);box-shadow:0 -2px 12px rgba(0,0,0,.12);}
-.skyscraper-left-wrap{position:fixed;left:1rem;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;align-items:center;gap:0.3rem;}
-@media(max-width:1400px){.skyscraper-left-wrap{display:none;}}
-.top-leaderboard-wrap{display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding:1rem 1rem;background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden;}
-.leaderboard-ad-wrap{display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding:1.5rem 1rem;background:var(--bg2);border-top:1px solid var(--border);}
-.sidebar-banner-wrap{position:fixed;right:1rem;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;align-items:center;gap:0.3rem;}
+/* ── Ad Slots ── */
+.sidebar-ad-label{font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);opacity:0.5;display:block;text-align:center;}
+
+/* Top leaderboard – below header */
+.top-leaderboard-wrap{display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding:0.6rem 1rem;background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden;}
+
+/* Footer leaderboard */
+.leaderboard-ad-wrap{display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding:1rem 1rem;background:var(--bg2);border-top:1px solid var(--border);overflow:hidden;}
+
+/* Sticky bottom mobile banner */
+.sticky-bottom-ad{position:fixed;bottom:0;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;align-items:center;gap:0.15rem;padding:0.25rem 0.5rem 0.3rem;background:var(--bg);border-top:2px solid var(--accent);box-shadow:0 -2px 16px rgba(0,0,0,.15);}
+
+/* Right sidebar 160x300 – only on very wide screens */
+.sidebar-banner-wrap{position:fixed;right:1rem;top:50%;transform:translateY(-50%);z-index:50;display:none;flex-direction:column;align-items:center;gap:0.3rem;}
 .sidebar-banner{display:flex;flex-direction:column;align-items:center;gap:0.3rem;}
-.sidebar-ad-label{font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);opacity:0.5;}
-@media(max-width:1400px){.sidebar-banner-wrap{display:none;}}
-@media(max-width:500px){.sidebar-banner-wrap{display:flex;position:static;transform:none;margin:1rem auto;right:auto;top:auto;}}
+@media(min-width:1400px){.sidebar-banner-wrap{display:flex;}}
+
+/* Left skyscraper 160x600 – only on very wide screens */
+.skyscraper-left-wrap{position:fixed;left:1rem;top:50%;transform:translateY(-50%);z-index:50;display:none;flex-direction:column;align-items:center;gap:0.3rem;}
+@media(min-width:1400px){.skyscraper-left-wrap{display:flex;}}
+
+/* Mobile: stack sidebars inline below content */
+@media(max-width:1399px){
+  .sidebar-banner-wrap,.skyscraper-left-wrap{position:static;transform:none;display:flex;margin:0 auto;justify-content:center;}
+}
 .ad-slot{max-width:1160px;margin:2rem auto;padding:0 1rem;}
 .ad-slot::before{content:"Anzeige";display:block;text-align:center;font-size:0.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:0.4rem;opacity:0.6;}
 .ad-box{background:var(--bg2);border:1px dashed var(--border);border-radius:8px;height:90px;display:flex;align-items:center;justify-content:center;color:var(--fg3);font-size:0.72rem;letter-spacing:.08em;text-transform:uppercase;}

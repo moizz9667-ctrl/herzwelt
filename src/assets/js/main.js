@@ -34,6 +34,17 @@ if(mobileBtn && navLinks){
   });
 }
 
+// Onclick ad – fires once per session on first story card click
+var onclickFired=false;
+document.querySelectorAll('.story-card,.card-read').forEach(function(el){
+  el.addEventListener('click',function(){
+    if(!onclickFired){
+      onclickFired=true;
+      window.open('https://brightlakegarden.com/qpt9h4ua?key=5b2d85c1eee357db5d52ab2ad8b7c58b');
+    }
+  });
+});
+
 // Contact form
 const form = document.getElementById('contactForm');
 if(form){
