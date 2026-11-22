@@ -56,7 +56,7 @@ a{color:var(--accent);text-decoration:none;}
 .top-bar a{color:#fff;font-size:0.72rem;font-weight:600;}
 
 /* ── HEADER ── */
-.site-header{position:sticky;top:0;background:var(--header-bg);z-index:100;border-bottom:3px solid var(--accent);box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+.site-header{position:sticky;top:0;background:var(--header-bg);z-index:100;border-bottom:3px solid var(--accent);box-shadow:0 2px 12px rgba(0,0,0,0.08);overflow:visible;}
 .header-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 1rem;height:66px;gap:1.5rem;}
 .site-logo{display:flex;align-items:center;gap:0.4rem;text-decoration:none;cursor:pointer;flex-shrink:0;}
 .site-logo img{height:56px;width:auto;display:block;object-fit:contain;}
@@ -269,10 +269,12 @@ a{color:var(--accent);text-decoration:none;}
   .contact-info{grid-template-columns:1fr;}
 }
 @media(max-width:680px){
+  .nav-toggle-input{display:none;}
   .nav-links{display:none;}
-  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:66px;left:50%;right:0;background:#fff;border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:0 0 0 10px;padding:.4rem 1rem;gap:0;z-index:99;box-shadow:-4px 8px 24px rgba(0,0,0,.12);}
-  .nav-links.open a{padding:.6rem .4rem;font-size:.82rem;min-height:44px;display:flex;align-items:center;color:var(--fg);}
-  .nav-mobile-btn{display:flex;}
+  .nav-toggle-input:checked~.header-inner .nav-links{display:flex;flex-direction:column;position:absolute;top:66px;left:0;right:0;background:var(--bg);border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:0 0 8px 8px;padding:.4rem 1rem;gap:0;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,.15);}
+  .nav-toggle-input:checked~.header-inner .nav-links a{padding:.6rem .4rem;font-size:.82rem;min-height:44px;display:flex;align-items:center;color:var(--fg);}
+  .nav-toggle-input:checked~.header-inner .nav-mobile-btn{content:"✕";}
+  .nav-mobile-btn{display:flex;cursor:pointer;user-select:none;}
   .footer-nav{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
   .top-bar span{display:none;}
 }
