@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="{{ description or 'HerzWelt – Vollständige deutsche Geschichten über Liebe, Schicksal und Familie.' }}">
 <title>{% if title %}{{ title }} – HerzWelt{% else %}HerzWelt – Deutsche Geschichten{% endif %}</title>
+<meta property="og:title" content="{% if title %}{{ title }} – HerzWelt{% else %}HerzWelt – Deutsche Geschichten{% endif %}">
+<meta property="og:description" content="{{ description or 'HerzWelt – Vollständige deutsche Geschichten über Liebe, Schicksal und Familie.' }}">
+<meta property="og:image" content="{{ ogImage or 'https://www.herzwelt.xyz/assets/images/logo.png' }}">
+<meta property="og:url" content="https://www.herzwelt.xyz{{ page.url }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HerzWelt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ ogImage or 'https://www.herzwelt.xyz/assets/images/logo.png' }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
