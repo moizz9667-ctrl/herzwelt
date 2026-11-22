@@ -11,10 +11,14 @@ if(toggle) toggle.addEventListener('click',()=>{ dark=!dark; applyTheme(); try{l
 const mobileBtn = document.getElementById('mobileBtn');
 const navLinks = document.getElementById('navLinks');
 if(mobileBtn && navLinks){
-  mobileBtn.addEventListener('click',()=>{
+  function toggleNav(e){
+    e.preventDefault();
+    e.stopPropagation();
     const open = navLinks.classList.toggle('open');
     mobileBtn.textContent = open ? '✕' : '☰';
-  });
+  }
+  mobileBtn.addEventListener('click', toggleNav);
+  mobileBtn.addEventListener('touchend', toggleNav);
   document.addEventListener('click', e => {
     if(!mobileBtn.contains(e.target) && !navLinks.contains(e.target)){
       navLinks.classList.remove('open');
