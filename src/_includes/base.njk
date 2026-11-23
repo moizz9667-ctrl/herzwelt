@@ -43,46 +43,8 @@
   </div>
 </header>
 
-<!-- LEFT SKYSCRAPER AD -->
-<div class="skyscraper-left-wrap">
-  <span class="sidebar-ad-label">Anzeige</span>
-  <script>
-    atOptions = {'key':'a9b32a80b394386352ae2802a75635db','format':'iframe','height':600,'width':160,'params':{}};
-  </script>
-  <script src="https://brightlakegarden.com/a9b32a80b394386352ae2802a75635db/invoke.js"></script>
-</div>
-
-<!-- SIDEBAR BANNER -->
-<div class="sidebar-banner-wrap">
-  <div class="sidebar-banner">
-    <span class="sidebar-ad-label">Anzeige</span>
-    <script>
-      atOptions = {'key':'4484a3cc37793594c59199ddb39bad5a','format':'iframe','height':300,'width':160,'params':{}};
-    </script>
-    <script src="https://brightlakegarden.com/4484a3cc37793594c59199ddb39bad5a/invoke.js"></script>
-  </div>
-</div>
-
-<!-- TOP LEADERBOARD AD -->
-<div class="top-leaderboard-wrap">
-  <span class="sidebar-ad-label">Anzeige</span>
-  <script>
-    atOptions = {'key':'16d976a08ff6c9fb661557f4dde62a87','format':'iframe','height':90,'width':728,'params':{}};
-  </script>
-  <script src="https://brightlakegarden.com/16d976a08ff6c9fb661557f4dde62a87/invoke.js"></script>
-</div>
-
 <!-- CONTENT -->
 {{ content | safe }}
-
-<!-- LEADERBOARD AD -->
-<div class="leaderboard-ad-wrap">
-  <span class="sidebar-ad-label">Anzeige</span>
-  <script>
-    atOptions = {'key':'c5701c83902dca9e72f2c209f7884701','format':'iframe','height':60,'width':468,'params':{}};
-  </script>
-  <script src="https://brightlakegarden.com/c5701c83902dca9e72f2c209f7884701/invoke.js"></script>
-</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -123,30 +85,5 @@
 </footer>
 
 <script src="/assets/js/main.js"></script>
-<script>
-var adsLoaded=false;
-function loadAds(){
-  if(adsLoaded)return;
-  adsLoaded=true;
-  setTimeout(function(){
-    var s1=document.createElement('script');
-    s1.src='https://brightlakegarden.com/5b/d9/1c/5bd91c2fa0b71969f4e7b8259ea1a541.js';
-    document.body.appendChild(s1);
-    var s2=document.createElement('script');
-    s2.src='https://brightlakegarden.com/e5/45/6e/e5456e0fa4174b2ab3eed479edc890d6.js';
-    document.body.appendChild(s2);
-  },5000);
-}
-window.addEventListener('scroll',loadAds,{once:true,passive:true});
-setTimeout(loadAds,15000);
-</script>
-<!-- STICKY BOTTOM MOBILE BANNER -->
-<div class="sticky-bottom-ad">
-  <span class="sidebar-ad-label">Anzeige</span>
-  <script>
-    atOptions = {'key':'b3da07f00e389d2957ee51076c75c8f9','format':'iframe','height':50,'width':320,'params':{}};
-  </script>
-  <script src="https://brightlakegarden.com/b3da07f00e389d2957ee51076c75c8f9/invoke.js"></script>
-</div>
 </body>
 </html>
