@@ -34,6 +34,35 @@ if(mobileBtn && navLinks){
   });
 }
 
+// Ad injection in story content
+(function(){
+  var content = document.querySelector('.story-content');
+  if(!content) return;
+  var paras = content.querySelectorAll('p');
+  if(paras.length === 0) return;
+  function injectAd(afterEl){
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'text-align:center;margin:1.2rem 0;';
+    var s1 = document.createElement('script');
+    s1.text = "atOptions={'key':'b3da07f00e389d2957ee51076c75c8f9','format':'iframe','height':50,'width':320,'params':{}};";
+    var s2 = document.createElement('script');
+    s2.src = 'https://brightlakegarden.com/b3da07f00e389d2957ee51076c75c8f9/invoke.js';
+    wrap.appendChild(s1);
+    wrap.appendChild(s2);
+    if(afterEl.nextSibling){
+      afterEl.parentNode.insertBefore(wrap, afterEl.nextSibling);
+    } else {
+      afterEl.parentNode.appendChild(wrap);
+    }
+  }
+  paras.forEach(function(p, i){
+    if(i >= 3) injectAd(p);
+  });
+  // Ad at end of story
+  var lastEl = content.lastElementChild;
+  if(lastEl) injectAd(lastEl);
+})();
+
 // Contact form
 const form = document.getElementById('contactForm');
 if(form){
