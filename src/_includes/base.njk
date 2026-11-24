@@ -85,5 +85,105 @@
 </footer>
 
 <script src="/assets/js/main.js"></script>
+
+<!-- NATIVE BANNER (in-feed style, before footer) -->
+<div class="native-ad-wrap" id="nativeAdWrap">
+  <div class="native-ad-inner">
+    <span class="native-ad-label">Anzeige</span>
+    <div style="text-align:center;">
+      <script>atOptions={'key':'b3da07f00e389d2957ee51076c75c8f9','format':'iframe','height':50,'width':320,'params':{}};</script>
+      <script src="https://brightlakegarden.com/b3da07f00e389d2957ee51076c75c8f9/invoke.js"></script>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL BAR (sticky bottom) -->
+<div class="social-bar" id="socialBar">
+  <div class="social-bar-inner">
+    <span class="social-bar-label">Gesponsert</span>
+    <div class="social-bar-ad">
+      <script>atOptions={'key':'b3da07f00e389d2957ee51076c75c8f9','format':'iframe','height':50,'width':320,'params':{}};</script>
+      <script src="https://brightlakegarden.com/b3da07f00e389d2957ee51076c75c8f9/invoke.js"></script>
+    </div>
+    <button class="social-bar-close" onclick="document.getElementById('socialBar').style.display='none'" aria-label="Schließen">✕</button>
+  </div>
+</div>
+
+<style>
+/* Native Banner */
+.native-ad-wrap {
+  max-width: 760px;
+  margin: 2rem auto 0;
+  padding: 0 1rem 2rem;
+}
+.native-ad-inner {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fafafa;
+  text-align: center;
+}
+.native-ad-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: .5rem;
+}
+@media (prefers-color-scheme: dark) {
+  .native-ad-inner { background: #1a1a1a; border-color: #333; }
+}
+
+/* Social Bar */
+.social-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -2px 12px rgba(0,0,0,.08);
+  padding: .4rem 1rem;
+}
+.social-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+}
+.social-bar-label {
+  font-size: 0.6rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+.social-bar-ad { line-height: 0; }
+.social-bar-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: .8rem;
+  color: #9ca3af;
+  padding: .25rem .4rem;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.social-bar-close:hover { color: #374151; }
+@media (prefers-color-scheme: dark) {
+  .social-bar { background: #111; border-color: #333; }
+  .social-bar-close:hover { color: #e5e7eb; }
+}
+/* Body padding so footer content not hidden behind bar */
+body { padding-bottom: 66px; }
+</style>
 </body>
 </html>
